@@ -12,9 +12,9 @@ mouse clicker，鼠标连点器
 
 ## 用法
 
-在release里下载`mouse-clicker.exe`，双击运行即可。
+在release里下载`mouse-clicker.exe`（还没上传），双击运行即可。
 
-不知道如何下载？看这里。
+不知道如何下载？看这里（还没写）。
 
 ## 演示
 
