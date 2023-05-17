@@ -1,14 +1,31 @@
-#include <stdio.h>
+// #include <stdio.h>
 #include <windows.h>
-#include <time.h>
 POINT point;
+
 int main(int argc, char const *argv[])
 {
+    int click_times = 5;
     while (1)
     {
-        if (GetAsyncKeyState(VK_F1))
+        if (GetAsyncKeyState(VK_F5))
         {
             break;
+        }
+        if (GetAsyncKeyState(VK_F1))
+        {
+            click_times = 5;
+        }
+        if (GetAsyncKeyState(VK_F2))
+        {
+            click_times = 10;
+        }
+        if (GetAsyncKeyState(VK_F3))
+        {
+            click_times = 30;
+        }
+        if (GetAsyncKeyState(VK_F4))
+        {
+            click_times = 100;
         }
         if (GetAsyncKeyState(VK_SHIFT))
         {
@@ -18,10 +35,9 @@ int main(int argc, char const *argv[])
             SHORT this_status = GetAsyncKeyState(VK_LBUTTON);
             if (this_status && (this_status != last_status))
             {
-                time_t t;
                 last_status = this_status;
                 GetCursorPos(&point);
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < click_times - 1; i++)
                 {
                     mouse_event(MOUSEEVENTF_LEFTDOWN, point.x, point.y, 0, 0);
                     mouse_event(MOUSEEVENTF_LEFTUP, point.x, point.y, 0, 0);
@@ -33,10 +49,9 @@ int main(int argc, char const *argv[])
             SHORT this_status_r = GetAsyncKeyState(VK_RBUTTON);
             if (this_status_r && (this_status_r != last_status_r))
             {
-                time_t t;
                 last_status_r = this_status_r;
                 GetCursorPos(&point);
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < click_times - 1; i++)
                 {
                     mouse_event(MOUSEEVENTF_RIGHTDOWN, point.x, point.y, 0, 0);
                     mouse_event(MOUSEEVENTF_RIGHTUP, point.x, point.y, 0, 0);
