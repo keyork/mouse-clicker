@@ -1,31 +1,50 @@
-// #include <stdio.h>
+#include <stdio.h>
 #include <windows.h>
 POINT point;
 
 int main(int argc, char const *argv[])
 {
+    system("chcp 65001");
+    printf("红色警戒2鼠标连点器\n");
     int click_times = 5;
     while (1)
     {
+        SHORT f1_p = GetAsyncKeyState(VK_F1);
+        SHORT f1 = GetAsyncKeyState(VK_F1);
+        SHORT f2_p = GetAsyncKeyState(VK_F2);
+        SHORT f2 = GetAsyncKeyState(VK_F2);
+        SHORT f3_p = GetAsyncKeyState(VK_F3);
+        SHORT f3 = GetAsyncKeyState(VK_F3);
+        SHORT f4_p = GetAsyncKeyState(VK_F4);
+        SHORT f4 = GetAsyncKeyState(VK_F4);
         if (GetAsyncKeyState(VK_F5))
         {
+            printf("退出\n");
             break;
         }
-        if (GetAsyncKeyState(VK_F1))
+        if (f1 && (f1 != f1_p))
         {
             click_times = 5;
+            printf("[切换]连点次数: %d\n", click_times);
+            f1_p = f1;
         }
-        if (GetAsyncKeyState(VK_F2))
+        if (f2 && (f2 != f2_p))
         {
             click_times = 10;
+            printf("[切换]连点次数: %d\n", click_times);
+            f2_p = f2;
         }
-        if (GetAsyncKeyState(VK_F3))
+        if (f3 && (f3 != f3_p))
         {
             click_times = 30;
+            printf("[切换]连点次数: %d\n", click_times);
+            f3_p = f3;
         }
-        if (GetAsyncKeyState(VK_F4))
+        if (f4 && (f4 != f4_p))
         {
             click_times = 100;
+            printf("[切换]连点次数: %d\n", click_times);
+            f4_p = f4;
         }
         if (GetAsyncKeyState(VK_SHIFT))
         {
