@@ -17,6 +17,23 @@ int main(int argc, char const *argv[])
         SHORT f3 = GetAsyncKeyState(VK_F3);
         SHORT f4_p = GetAsyncKeyState(VK_F4);
         SHORT f4 = GetAsyncKeyState(VK_F4);
+
+        // 按住A之后就QWER轮着按，刷APM用
+        SHORT f_a = GetAsyncKeyState(65);
+        SHORT f_ap = GetAsyncKeyState(65);
+        if (f_a && (f_a != f_ap))
+        {
+            keybd_event(81, 0, 0, 0);
+            keybd_event(81, 0, 2, 0);
+            keybd_event(87, 0, 0, 0);
+            keybd_event(87, 0, 2, 0);
+            keybd_event(69, 0, 0, 0);
+            keybd_event(69, 0, 2, 0);
+            keybd_event(82, 0, 0, 0);
+            keybd_event(82, 0, 2, 0);
+            f_ap = f_a;
+        }
+
         if (GetAsyncKeyState(VK_F5))
         {
             printf("退出\n");
